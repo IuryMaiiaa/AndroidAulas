@@ -1,0 +1,1 @@
+#Esse repositório é destinado as minhas aulas de Android, todo o conteudo é voltado para jogos em Android
