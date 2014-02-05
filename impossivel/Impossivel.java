@@ -1,6 +1,8 @@
 package com.example.impossivel;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -26,11 +28,23 @@ public class Impossivel extends SurfaceView implements Runnable{
 		renderThread = new Thread(this);
 		renderThread.start();
 	}
+	
+	private void drawPlayer(Canvas canvas) {
+		paint.setColor(Color.GREEN);
+		canvas.drawCircle(100,100,100,paint);
+	}
 
 	@Override
 	public void run() {
 		while( running ) {
-			System.out.println("impossivel running");
+			if (!holder.getSurface().isValid()) {
+				continue;
+			}
+			Canvas canvas = holder.lockCanvas();
+		
+			drawPlayer(canvas);
+			
+			holder.unlockCanvasAndPost(canvas);
 		}
 		
 	}
