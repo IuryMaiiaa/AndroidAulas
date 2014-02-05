@@ -16,6 +16,8 @@ public class Impossivel extends SurfaceView implements Runnable{
 	private boolean running = false;
 	// thread responsavel pelas interaçoes do usuário
 	Thread renderThread = null;
+	
+	private int playerY = 300;
 
 	public Impossivel(Context context) {
 		super(context);
@@ -31,7 +33,11 @@ public class Impossivel extends SurfaceView implements Runnable{
 	
 	private void drawPlayer(Canvas canvas) {
 		paint.setColor(Color.GREEN);
-		canvas.drawCircle(100,100,100,paint);
+		canvas.drawCircle(100,playerY,100,paint);
+	}
+	
+	public void moveDonw(int pixels) {
+		playerY += pixels;
 	}
 
 	@Override
