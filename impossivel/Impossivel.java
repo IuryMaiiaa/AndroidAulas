@@ -24,10 +24,16 @@ public class Impossivel extends SurfaceView implements Runnable{
 
 	private boolean GameOver;
 	
+	private int score=2000;
+	
 	public Impossivel(Context context) {
 		super(context);
 		paint = new Paint();
 		holder = getHolder();
+	}
+	
+	public void addPoints(int points) {
+		score += points;
 	}
 	
 	public void resume() {
@@ -37,9 +43,29 @@ public class Impossivel extends SurfaceView implements Runnable{
 		renderThread.start();
 	}
 	
+	private void drawScore(Canvas canvas) {
+		paint.setStyle(Style.FILL);
+		paint.setColor(Color.WHITE);
+		paint.setTextSize(50);
+		canvas.drawText(String.valueOf(score),50,200,paint);
+	}
+	
 	private void drawPlayer(Canvas canvas) {
 		paint.setColor(Color.GREEN);
 		canvas.drawCircle(playerX,playerY,playerRaio,paint);
+	}
+	
+	// desenhando bottons
+	private void drawButtons(Canvas canvas) {
+		paint.setStyle(Style.FILL);
+		paint.setColor(Color.WHITE);
+		paint.setTextSize(50);
+		canvas.drawText("Restart",50,300,paint);
+		
+		paint.setStyle(Style.FILL);
+		paint.setColor(Color.WHITE);
+		paint.setTextSize(50);
+		canvas.drawText("Exit",50,500,paint);
 	}
 	
 	private void drawEnemy(Canvas canvas) {
@@ -61,9 +87,16 @@ public class Impossivel extends SurfaceView implements Runnable{
 		}
 	}
 	
+	public void init() {
+		enemyX = enemyY = enemyRaio = 50;
+		playerX = playerY = 300;
+		playerRaio = 50;
+		GameOver = false;
+	}
+	
 	private void stopGame(Canvas canvas) {
 		paint.setStyle(Style.FILL);
-		paint.setColor(Color.LTGRAY);
+		paint.setColor(Color.BLUE);
 		paint.setTextSize(100);
 		canvas.drawText("GAME OVER",50,150,paint);
 	}
@@ -87,6 +120,10 @@ public class Impossivel extends SurfaceView implements Runnable{
 				stopGame(canvas);
 				break;
 			}
+			
+			drawScore(canvas);
+			
+			drawButtons(canvas);
 			
 			holder.unlockCanvasAndPost(canvas);
 		}
