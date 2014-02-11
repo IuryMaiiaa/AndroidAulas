@@ -1,6 +1,8 @@
 package com.example.impossivel;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -25,6 +27,8 @@ public class Impossivel extends SurfaceView implements Runnable{
 	private boolean GameOver;
 	
 	private int score=2000;
+	
+	private Bitmap imagem;
 	
 	public Impossivel(Context context) {
 		super(context);
@@ -111,6 +115,7 @@ public class Impossivel extends SurfaceView implements Runnable{
 		
 			canvas.drawColor(Color.BLACK);
 			
+			
 			drawEnemy(canvas);
 			drawPlayer(canvas);
 			
@@ -124,6 +129,9 @@ public class Impossivel extends SurfaceView implements Runnable{
 			drawScore(canvas);
 			
 			drawButtons(canvas);
+			
+			imagem = BitmapFactory.decodeResource(getResources(),);
+			canvas.drawBitmap(imagem, 0, 0, null);
 			
 			holder.unlockCanvasAndPost(canvas);
 		}
