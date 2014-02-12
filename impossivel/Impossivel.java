@@ -55,8 +55,8 @@ public class Impossivel extends SurfaceView implements Runnable{
 	}
 	
 	private void drawPlayer(Canvas canvas) {
-		paint.setColor(Color.GREEN);
-		canvas.drawCircle(playerX,playerY,playerRaio,paint);
+		imagem = BitmapFactory.decodeResource(getResources(),R.drawable.nave2);
+		canvas.drawBitmap(imagem, playerX, playerY, null);
 	}
 	
 	// desenhando bottons
@@ -113,7 +113,9 @@ public class Impossivel extends SurfaceView implements Runnable{
 			}
 			Canvas canvas = holder.lockCanvas();
 		
-			canvas.drawColor(Color.BLACK);
+			//canvas.drawColor(Color.BLACK);
+			imagem = BitmapFactory.decodeResource(getResources(),R.drawable.sky);
+			canvas.drawBitmap(imagem, 0, 0, null);
 			
 			
 			drawEnemy(canvas);
@@ -129,9 +131,6 @@ public class Impossivel extends SurfaceView implements Runnable{
 			drawScore(canvas);
 			
 			drawButtons(canvas);
-			
-			imagem = BitmapFactory.decodeResource(getResources(),);
-			canvas.drawBitmap(imagem, 0, 0, null);
 			
 			holder.unlockCanvasAndPost(canvas);
 		}
