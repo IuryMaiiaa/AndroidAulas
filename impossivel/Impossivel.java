@@ -63,12 +63,12 @@ public class Impossivel extends SurfaceView implements Runnable{
 	private void drawButtons(Canvas canvas) {
 		paint.setStyle(Style.FILL);
 		paint.setColor(Color.WHITE);
-		paint.setTextSize(50);
+		paint.setTextSize(20);
 		canvas.drawText("Restart",50,300,paint);
 		
 		paint.setStyle(Style.FILL);
 		paint.setColor(Color.WHITE);
-		paint.setTextSize(50);
+		paint.setTextSize(20);
 		canvas.drawText("Exit",50,500,paint);
 	}
 	
@@ -119,6 +119,8 @@ public class Impossivel extends SurfaceView implements Runnable{
 			
 			
 			drawEnemy(canvas);
+			
+			
 			drawPlayer(canvas);
 			
 			checkCollision(canvas);
